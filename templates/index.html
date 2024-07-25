@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/addTodo" method="post">
+        <input name="todo" type="text" id="todo">
+        <button type="submit">add</button>
+    </form>
+    <form action="/delete" method="get">
+        <button type="submit" style="cursor: pointer;">clear</button>
+    </form>
+    <div id="container" style="cursor: pointer;">
+
+            {% for key,value in d.items() %}
+            <p id="a"><strong>{{key}} :</strong>{{value}}</p>
+            {% endfor %}
+    
+    </div>
+
+</body>
+<script>
+    console.log("ok")
+    let v = document.querySelector("#a")
+    v.addEventListener("click", function() {
+        v.style.textdecoration = "linethrough"
+
+    })
+
+</script>
+
+</html>

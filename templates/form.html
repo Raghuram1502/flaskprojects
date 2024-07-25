@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>patient form</title>
+</head>
+<center>
+<body>
+    <form action="/add" , method="post">
+        <table>
+            <tr>
+                <td>Name:</td> <td><input placeholder="Name" type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>Age:</td> <td><input placeholder="Age" type="number" name="age"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td> <td><input type= "text" placeholder="male or female" name="gender"></td>
+            </tr>
+            <tr>
+                <td>Address:</td> <td><input type="text" placeholder="Address" name="address"></td>
+            </tr>
+            <tr>
+                <td>Mobile no:</td> <td><input type="number" placeholder="phn no..." name="phn"></td>
+            </tr>
+            <tr>
+                <td>Email:</td> <td><input type="email" placeholder="email" name="email"></td>
+            </tr>
+           
+            <tr>
+                <td>Medical issue:</td> <td><input type="text" placeholder="sick" name="sick"></td>
+            </tr>
+            <tr> <td><button type="reset">reset</button></td> <td><button type="submit">submit</button></td></tr>
+        </table>
+    </form>
+    <div id="s" style="padding: 50px;">
+        <form action="/search", method="post">
+            <label for="id" >id:</label>
+            <input type="number", placeholder="enter id", name="id">
+            <button type="submit">search</button>
+        </form>
+    </div>
+</body>
+</center>
+</html>

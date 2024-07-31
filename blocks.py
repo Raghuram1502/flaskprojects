@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped, mapped_column,relationship
@@ -30,7 +30,7 @@ def add():
     block = Blocks(value = x)
     db.session.add(block)
     db.session.commit()
-    return render_template("blocks.html")
+    return redirect(url_for('blocks'))
 
 @app.route('/getallblocks', methods = ["GET"])
 def getallblocks():
@@ -39,23 +39,24 @@ def getallblocks():
 
 @app.route('/delete/<int:id>',methods = ["GET","POST"])
 def delete(id):
-    x = db.get_or_404(Blocks,id)
+    block = db.get_or_404(Blocks,id)
     if request.method == "POST":
-        db.session.delete(x)
+        db.session.delete(block)
         db.session.commit()
-    return render_template("blocks.html")
+        render_template("container.html")
+    return render_template("delete.html",block = block)
+
 
 @app.route('/update/<int:id>',methods = ["GET","POST"])
 def update(id):
-    data = request.form.get("value")
-    x = db.get_or_404(Blocks,id)
+    block = db.get_or_404(Blocks,id)
     if request.method == "POST":
-        if x and data is None:
-            return "error value or id not found"
-        if "value" in data:
-            x.value = data["value"]
-    db.session.commit()
-    return "updated"
+        data = request.form.get("value")
+        block.value = data
+        db.session.commit()
+        return render_template("container.html")
+    return render_template("update.html",block=block)
+
 
 
 

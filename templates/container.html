@@ -9,8 +9,12 @@
     <h1>Blocks</h1>
     <ul>
         {% for block in blocks %}
-            <li><a href="update.html">{{block.value}}</a></li>
+            <li>{{block.value}}
+                <a href="/update/{{block.id}}">Edit</a>
+                <a href="/delete/{{block.id}}">delete</a>
+            </li>
         {% endfor %}
     </ul>
+    <a href="/">back</a>
 </body>
 </html>
